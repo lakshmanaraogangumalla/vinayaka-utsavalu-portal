@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="LOGO.png">
+    <title>Vinayaka Chavithi Maha Utsavalu - Divine Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes floatPetal {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+        @keyframes bounceSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.7)); }
+            50% { filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.95)); }
+        }
+        @keyframes stemWind {
+            0%, 100% { margin-left: 0; }
+            50% { margin-left: 10px; }
+        }
+        @keyframes flowerBlow {
+            0%, 100% { transform: translateX(-50%) rotate(-4deg); }
+            50% { transform: translateX(-50%) rotate(10deg); }
+        }
+        @keyframes floatingPetalWind {
+            0% { transform: translateX(-30px) translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.9; }
+            50% { transform: translateX(250px) translateY(-70px) rotate(180deg); }
+            100% { transform: translateX(560px) translateY(60px) rotate(420deg); opacity: 0; }
+        }
+
+        .petal-bg {
+            position: fixed;
+            top: -20px;
+            width: 14px;
+            height: 14px;
+            background: radial-gradient(circle, #f43f5e 0%, #fb7185 100%);
+            border-radius: 50% 0 50% 50%;
+            animation: floatPetal linear infinite;
+            z-index: 40;
+            pointer-events: none;
+        }
+        .animate-bounce-slow { animation: bounceSlow 3s ease-in-out infinite; }
+        .ganesha-glow { animation: glowPulse 4s ease-in-out infinite; }
+
+        body {
+            background: linear-gradient(135deg, #78350f 0%, #b45309 40%, #ea580c 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .flower-side-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            overflow: visible;
+        }
+
+        .flowerwise-bouquet {
+            position: relative;
+            width: 220px;
+            height: 320px;
+            overflow: visible;
+        }
+
+        .stem {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            width: 3px;
+            height: 180px;
+            background: #3c8c5b;
+            transform-origin: bottom center;
+            z-index: 2;
+            animation: stemWind 3s ease-in-out infinite;
+        }
+        .stem:nth-child(2) { transform: rotate(-18deg); animation-delay: -.5s; height: 165px; left: 42%; }
+        .stem:nth-child(3) { transform: rotate(18deg); animation-delay: -1s; height: 175px; left: 58%; }
+        .stem:nth-child(4) { transform: rotate(-8deg); animation-delay: -1.5s; height: 190px; left: 47%; }
+        .stem:nth-child(5) { transform: rotate(10deg); animation-delay: -.8s; height: 185px; left: 53%; }
+
+        .flower-node {
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            left: 50%;
+            top: -35px;
+            transform: translateX(-50%);
+            transform-origin: center bottom;
+            animation: flowerBlow 3s ease-in-out infinite;
+        }
+
+        .flower-petal-item {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 24px;
+            height: 38px;
+            background: linear-gradient(135deg, #ff8dbd, #e85b91);
+            border-radius: 50% 50% 45% 45%;
+            transform-origin: 50% 100%;
+            margin-left: -12px;
+            margin-top: -34px;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,.15));
+        }
+        .flower-petal-item:nth-child(1) { transform: rotate(0deg) translateY(-6px); }
+        .flower-petal-item:nth-child(2) { transform: rotate(45deg) translateY(-6px); }
+        .flower-petal-item:nth-child(3) { transform: rotate(90deg) translateY(-6px); }
+        .flower-petal-item:nth-child(4) { transform: rotate(135deg) translateY(-6px); }
+        .flower-petal-item:nth-child(5) { transform: rotate(180deg) translateY(-6px); }
+        .flower-petal-item:nth-child(6) { transform: rotate(225deg) translateY(-6px); }
+        .flower-petal-item:nth-child(7) { transform: rotate(270deg) translateY(-6px); }
+        .flower-petal-item:nth-child(8) { transform: rotate(315deg) translateY(-6px); }
+
+        .flower-core {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, #fff19a 0%, #e8b74a 55%, #c98a28 100%);
+            border-radius: 50%;
+            z-index: 4;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+
+        .bouquet-leaf {
+            position: absolute;
+            width: 35px;
+            height: 16px;
+            background: #4caa68;
+            border-radius: 100% 0 100% 0;
+            left: 50%;
+            bottom: 180px;
+            z-index: 3;
+        }
+        .bouquet-leaf.left { transform: translateX(-25px) rotate(150deg); }
+        .bouquet-leaf.right { transform: translateX(10px) rotate(30deg); }
+
+        .vase-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 150px;
+            background: linear-gradient(90deg, #48bfa1, #67d0b2, #42b697);
+            border-radius: 15px 15px 35px 35px;
+            clip-path: polygon(35% 0, 65% 0, 68% 15%, 82% 88%, 72% 100%, 28% 100%, 18% 88%, 32% 15%);
+            z-index: 5;
+            box-shadow: 0 15px 30px rgba(0,0,0,.25);
+        }
+
+        .floating-petal-wind {
+            position: absolute;
+            width: 12px;
+            height: 18px;
+            background: #f17aaa;
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatingPetalWind linear infinite;
+        }
+
+        .glass-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .glass-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 35px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        .mouse-scene {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+        .rat {
+            position: absolute;
+            left: -60px;
+            width: 80px;
+            animation: walkAcross 16s linear infinite;
+        }
+        .rat-svg {
+            width: 100%;
+            height: auto;
+        }
+        @keyframes walkAcross {
+            0% { left: -80px; transform: scaleX(1); }
+            45% { left: calc(100% - 100px); transform: scaleX(1); }
+            50% { left: calc(100% - 100px); transform: scaleX(-1); }
+            95% { left: -80px; transform: scaleX(-1); }
+            100% { left: -80px; transform: scaleX(1); }
+        }
+
+        /* FLIP BOOK STYLES */
+        .flipbook-section {
+            background: radial-gradient(circle at center, #78350f 0%, #451a03 100%);
+            border-radius: 1.5rem;
+            padding: 3rem 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border: 3px solid rgba(251, 191, 36, 0.4);
+            margin: 2rem 0;
+        }
+        .book-container {
+            perspective: 1500px;
+            width: 100%;
+            max-width: 750px;
+            height: 480px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .book-page {
+            width: 100%;
+            height: 100%;
+            background: #fffbeb;
+            color: #451a03;
+            border-radius: 1rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 40px rgba(217, 119, 6, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2.5rem;
+            border: 4px solid #d97706;
+            position: absolute;
+            backface-visibility: hidden;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .book-page img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            border: 2px solid #f59e0b;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="font-sans relative">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            for (let i = 0; i < 20; i++) {
+                const p = document.createElement('div');
+                p.className = 'petal-bg';
+                p.style.left = `${Math.random() * 100}vw`;
+                p.style.animationDuration = `${Math.random() * 5 + 4}s`;
+                p.style.animationDelay = `${Math.random() * 5}s`;
+                document.body.appendChild(p);
+            }
+        });
+    </script>
+
+    <!-- Header & Navigation -->
+    <header class="bg-amber-950/95 backdrop-blur-md text-white shadow-2xl sticky top-0 z-50 border-b border-amber-500/30">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
+            <h1 class="text-2xl font-black tracking-wide flex items-center gap-2 text-amber-200">
+                <span class="animate-bounce">🙏</span> Vinayaka Utsavalu <span class="animate-bounce">🙏</span>
+            </h1>
+            <nav class="space-x-6 text-sm font-bold hidden md:flex">
+                <a href="#banners" class="hover:text-amber-300 transition duration-300">Banners</a>
+                <a href="#events" class="hover:text-amber-300 transition duration-300">Day-Wise Events</a>
+                <a href="#work" class="hover:text-amber-300 transition duration-300">Work Allocation</a>
+                <a href="#donations" class="hover:text-amber-300 transition duration-300">Yearly Donations</a>
+                <a href="#food" class="hover:text-amber-300 transition duration-300">Food & Prasadam</a>
+                <a href="#finances" class="hover:text-amber-300 transition duration-300">Financial Tracker</a>
+                <a href="#flipbook-section" class="hover:text-amber-300 transition duration-300">Divine Memory Book</a>
+                <a href="#admin" class="text-amber-300 hover:underline">Super Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Central Lord Ganesh Logo & Flower Framed Banner Section -->
+    <section id="banners" class="flower-side-container">
+        
+        <div class="hidden xl:block absolute left-4 top-90 pointer-events-none z-20 scale-90">
+            <div class="flowerwise-bouquet">
+                <div class="floating-petal-wind" style="top:50px; animation-duration:7s;"></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="bouquet-leaf left"></div>
+                <div class="bouquet-leaf right"></div>
+                <div class="vase-container"></div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 max-w-4xl relative z-30 text-center">
+            
+            <div class="flex justify-center items-center gap-6 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-amber-200 via-amber-400 to-amber-700 rounded-full shadow-2xl flex items-center justify-center border-2 border-amber-100 cursor-pointer" title="Divine Modak">
+                    <div class="w-5 h-5 bg-amber-100 rounded-full opacity-70 shadow-inner flex items-center justify-center text-[10px] font-black text-amber-900">🥮</div>
+                </div>
+                <div class="w-16 h-16 bg-gradient-to-br from-amber-200 via-amber-400 to-amber-700 rounded-full shadow-2xl flex items-center justify-center border-2 border-amber-100 cursor-pointer" title="Divine Modak">
+                    <div class="w-6 h-6 bg-amber-100 rounded-full opacity-70 shadow-inner flex items-center justify-center text-[10px] font-black text-amber-900">🥮</div>
+                </div>
+
+                <div class="bg-gradient-to-b from-amber-100/95 to-amber-200/90 p-5 rounded-full shadow-2xl border-4 border-amber-400 animate-bounce-slow ganesha-glow flex items-center justify-center">
+                    <img
+                        src="vinyakalogo.jpg"
+                        alt="Lord Ganesha"
+                        class="w-24 h-24 object-contain rounded-full"
+                        onerror="this.src='https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=200&q=80'"
+                    />
+                </div>
+
+                <div class="w-16 h-16 bg-gradient-to-br from-amber-200 via-amber-400 to-amber-700 rounded-full shadow-2xl flex items-center justify-center border-2 border-amber-100 cursor-pointer" title="Divine Modak">
+                    <div class="w-6 h-6 bg-amber-100 rounded-full opacity-70 shadow-inner flex items-center justify-center text-[10px] font-black text-amber-900">🥮</div>
+                </div>
+                <div class="w-10 h-10 bg-gradient-to-br from-amber-200 via-amber-400 to-amber-700 rounded-full shadow-2xl flex items-center justify-center border-2 border-amber-100 cursor-pointer" title="Divine Modak">
+                    <div class="w-5 h-5 bg-amber-100 rounded-full opacity-70 shadow-inner flex items-center justify-center text-[10px] font-black text-amber-900">🥮</div>
+                </div>
+            </div>
+            
+            <h2 class="text-3xl md:text-5xl font-black mb-2 drop-shadow-lg text-amber-100 tracking-wider">Om Gan Ganapataye Namaha 🙏</h2>
+            <p class="text-amber-200 text-sm md:text-base font-semibold mb-8 uppercase tracking-widest bg-amber-900/60 py-1.5 px-5 rounded-full inline-block border border-amber-400/40 shadow-md">Sri Vinayaka Chavithi Maha Utsavalu • Live Community Portal</p>
+
+            <div class="relative overflow-hidden rounded-3xl shadow-2xl bg-amber-950 border-4 border-amber-400/80 glass-hover">
+                <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out h-[350px] md:h-[450px]">
+                    <div class="min-w-full h-full relative">
+                        <img src="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=1200&q=80" alt="Ganesha Festival Idol" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-8 text-white text-left">
+                            <span class="bg-amber-600 text-xs uppercase px-3 py-1 rounded-full font-extrabold w-max mb-2 tracking-wider shadow">Sri Vinayaka Utsavalu</span>
+                            <h3 class="text-2xl md:text-3xl font-black drop-shadow-md">Grand Ganesha Installation & Celebrations</h3>
+                            <p class="text-sm text-amber-200 mt-1 font-medium">Join us for 9 days of divine blessings, poojas, and community service.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/90 text-white p-3 rounded-full transition shadow-xl z-20 font-bold">❮</button>
+                <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/90 text-white p-3 rounded-full transition shadow-xl z-20 font-bold">❯</button>
+            </div>
+
+            <div class="relative h-16 mt-6 overflow-hidden flex items-center bg-amber-950/80 rounded-2xl border-2 border-amber-400/40 shadow-xl px-4">
+                <div class="mouse-scene">
+                    <div class="rat" id="rat">
+                        <svg class="rat-svg" viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+                            <path class="tail" d="M35 75 C10 85, 5 105, 35 100 C55 97, 40 82, 25 90" stroke="#a96745" stroke-width="3" fill="none"/>
+                            <ellipse class="body" cx="78" cy="62" rx="48" ry="30" fill="#9b6040"/>
+                            <ellipse cx="83" cy="68" rx="30" ry="21" fill="#c88962" opacity=".65"/>
+                            <ellipse cx="75" cy="48" rx="42" ry="23" fill="#a96745"/>
+                            <ellipse class="foot" cx="70" cy="91" rx="15" ry="7" fill="#805037"/>
+                            <ellipse class="foot foot2" cx="108" cy="89" rx="14" ry="7" fill="#805037"/>
+                            <ellipse cx="116" cy="47" rx="28" ry="26" fill="#a96745"/>
+                            <circle cx="101" cy="26" r="15" fill="#a96745"/>
+                            <circle cx="101" cy="26" r="10" fill="#e1a080"/>
+                            <circle cx="124" cy="23" r="15" fill="#a96745"/>
+                            <circle cx="124" cy="23" r="10" fill="#e1a080"/>
+                            <circle cx="124" cy="43" r="4" fill="#111"/>
+                            <circle cx="125" cy="42" r="1.3" fill="white"/>
+                            <circle class="nose" cx="141" cy="52" r="5" fill="#5e2f29"/>
+                            <path d="M125 65 Q135 60 140 68" stroke="#9b6040" stroke-width="4" fill="none" stroke-linecap="round"/>
+                            <circle cx="138" cy="67" r="9" fill="url(#ladduGradientMini)" stroke="#b45309" stroke-width="1.5"/>
+                            <defs>
+                                <radialGradient id="ladduGradientMini" cx="30%" cy="30%" r="70%">
+                                    <stop offset="0%" stop-color="#fde047"/>
+                                    <stop offset="100%" stop-color="#b45309"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden xl:block absolute right-4 top-90 pointer-events-none z-20 scale-90">
+            <div class="flowerwise-bouquet">
+                <div class="floating-petal-wind" style="top:50px; animation-duration:8s; animation-delay:2s;"></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="stem"><div class="flower-node"><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-petal-item"></span><span class="flower-core"></span></div></div>
+                <div class="bouquet-leaf left"></div>
+                <div class="bouquet-leaf right"></div>
+                <div class="vase-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 py-10 space-y-16 bg-amber-950/60 backdrop-blur-md rounded-3xl shadow-2xl border border-amber-500/30 my-8">
+
+        <!-- Day-Wise Events & Daily Pooja Updates -->
+        <section id="events" class="scroll-mt-24">
+            <div class="flex justify-between items-center mb-8 border-b-2 border-amber-400/50 pb-4 flex-wrap gap-4">
+                <h3 class="text-3xl font-black text-amber-100 flex items-center gap-3">📅 Day-Wise Events & Upcoming Poojas</h3>
+                <div id="day-filter-buttons" class="flex gap-2 flex-wrap text-sm font-semibold">
+                    <button onclick="filterEvents('All')" class="px-4 py-2 bg-amber-600 text-white rounded-xl shadow hover:bg-amber-500 transition">All Days</button>
+                </div>
+            </div>
+            <div id="events-grid" class="grid md:grid-cols-3 gap-6">
+                <p class="text-amber-200 font-medium">Loading day-wise events...</p>
+            </div>
+        </section>
+
+        <!-- Volunteer Work Allocations -->
+        <section id="work" class="scroll-mt-24">
+            <h3 class="text-3xl font-black text-amber-100 mb-8 border-b-2 border-amber-400/50 pb-4 flex items-center gap-3">📋 Volunteer Work Allocations</h3>
+            <div class="bg-white/95 text-slate-800 rounded-2xl shadow-2xl overflow-x-auto border border-amber-300">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-amber-200/90 text-amber-950 font-black text-sm uppercase tracking-wider">
+                            <th class="p-4">Task Name</th>
+                            <th class="p-4">Assigned To</th>
+                            <th class="p-4">Date</th>
+                            <th class="p-4">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="work-table" class="divide-y divide-slate-200 font-medium">
+                        <tr><td colspan="4" class="p-6 text-center text-slate-500">Loading work allocations...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Yearly Donations Transparency List -->
+        <section id="donations" class="scroll-mt-24">
+            <div class="flex justify-between items-center mb-8 border-b-2 border-amber-400/50 pb-4 flex-wrap gap-4">
+                <h3 class="text-3xl font-black text-amber-100 flex items-center gap-3">💰 Yearly Member Donations Records</h3>
+                <select id="donation-year-filter" onchange="renderDonations(cachedData.donations)" class="p-3 border-2 border-amber-400 rounded-xl bg-white text-sm font-bold text-amber-950 shadow">
+                    <option value="All">All Years</option>
+                </select>
+            </div>
+            <div class="bg-white/95 text-slate-800 rounded-2xl shadow-2xl overflow-x-auto border border-amber-300">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-amber-200/90 text-amber-950 font-black text-sm uppercase tracking-wider">
+                            <th class="p-4">Member Name</th>
+                            <th class="p-4">Amount (₹)</th>
+                            <th class="p-4">Year</th>
+                            <th class="p-4">Date</th>
+                            <th class="p-4">Gotra / Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="donations-table" class="divide-y divide-slate-200 font-medium">
+                        <tr><td colspan="5" class="p-6 text-center text-slate-500">Loading donations...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Food Distribution & Prasadam -->
+        <section id="food" class="scroll-mt-24">
+            <h3 class="text-3xl font-black text-amber-100 mb-8 border-b-2 border-amber-400/50 pb-4 flex items-center gap-3">🍲 Food Distribution & Prasadam Events</h3>
+            <div id="food-grid" class="grid md:grid-cols-2 gap-6">
+                <p class="text-amber-200 font-medium">Loading food distribution records...</p>
+            </div>
+        </section>
+
+        <!-- Financial Costs, Remaining Money & Interest Tracker Table -->
+        <section id="finances" class="scroll-mt-24">
+            <h3 class="text-3xl font-black text-amber-100 mb-8 border-b-2 border-amber-400/50 pb-4 flex items-center gap-3">📊 Event Costs, Remaining Funds & Interest Tracker</h3>
+            <div class="bg-white/95 text-slate-800 rounded-2xl shadow-2xl overflow-x-auto border border-amber-300 mb-8">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-amber-200/90 text-amber-950 font-black text-sm uppercase tracking-wider">
+                            <th class="p-4">Category / Year</th>
+                            <th class="p-4">Total Collections (₹)</th>
+                            <th class="p-4">Total Expenses / Costs (₹)</th>
+                            <th class="p-4">Remaining Savings (₹)</th>
+                            <th class="p-4">Interest Accrued (₹)</th>
+                            <th class="p-4">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="finance-table" class="divide-y divide-slate-200 font-medium">
+                        <tr><td colspan="6" class="p-6 text-center text-slate-500">Loading financial records...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- INTERACTIVE INTEREST & SAVINGS CALCULATOR (Added Feature) -->
+            <div class="bg-amber-900/90 border-2 border-amber-400 p-6 md:p-8 rounded-3xl shadow-xl text-white">
+                <h4 class="text-2xl font-black text-amber-200 mb-4 flex items-center gap-2">🧮 Interactive Fund Interest & Growth Calculator</h4>
+                <p class="text-sm text-amber-100 mb-6">Calculate future growth, savings, or fund interest accrued over time based on principal, annual rate, and duration.</p>
+                
+                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider mb-1 text-amber-300">Principal Amount (₹)</label>
+                        <input type="number" id="calc-principal" value="50000" class="w-full p-3 rounded-xl bg-white text-slate-900 font-bold border-2 border-amber-300 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider mb-1 text-amber-300">Annual Interest Rate (%)</label>
+                        <input type="number" id="calc-rate" value="6.5" step="0.1" class="w-full p-3 rounded-xl bg-white text-slate-900 font-bold border-2 border-amber-300 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider mb-1 text-amber-300">Duration (Years)</label>
+                        <input type="number" id="calc-years" value="3" class="w-full p-3 rounded-xl bg-white text-slate-900 font-bold border-2 border-amber-300 outline-none">
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 bg-amber-950 p-5 rounded-2xl border border-amber-500/50">
+                    <div>
+                        <p class="text-xs text-amber-300 uppercase tracking-widest font-bold">Estimated Interest Accrued:</p>
+                        <p id="calc-result-interest" class="text-2xl font-black text-green-400">₹0.00</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-amber-300 uppercase tracking-widest font-bold">Total Future Fund Value:</p>
+                        <p id="calc-result-total" class="text-2xl font-black text-amber-200">₹0.00</p>
+                    </div>
+                    <button onclick="calculateInterest()" class="bg-amber-500 hover:bg-amber-400 text-amber-950 font-black px-6 py-3 rounded-xl shadow-lg transition">Calculate Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVINE MEMORY FLIP BOOK SECTION -->
+        <section id="flipbook-section" class="flipbook-section scroll-mt-24">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-black text-amber-100 flex items-center justify-center gap-3">📖 Divine Memory Flip Book</h3>
+                <p class="text-amber-200 text-sm mt-2">Explore festival moments uploaded via the admin panel.</p>
+            </div>
+
+            <div class="book-container">
+                <div id="flipbook-pages" class="w-full h-full relative">
+                    <div class="book-page">
+                        <p class="text-center text-amber-900 font-bold">Loading divine memories...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center gap-6 mt-8">
+                <button onclick="prevBookPage()" class="bg-amber-600 hover:bg-amber-500 text-white font-black px-6 py-3 rounded-xl shadow-lg transition">❮ Previous Page</button>
+                <span id="page-indicator" class="text-amber-100 font-bold text-lg">Page 1 of 1</span>
+                <button onclick="nextBookPage()" class="bg-amber-600 hover:bg-amber-500 text-white font-black px-6 py-3 rounded-xl shadow-lg transition">Next Page ❯</button>
+            </div>
+        </section>
+      
+        <!-- Super Admin Management Panel -->
+        <section id="admin" class="bg-white/95 text-slate-800 p-8 rounded-3xl shadow-2xl border-4 border-amber-400 scroll-mt-24">
+            <h3 class="text-2xl font-black text-amber-950 mb-6 flex items-center gap-2">🔐 Super Admin Management Panel</h3>
+            <div id="admin-login-box" class="space-y-4 max-w-md">
+                <input type="password" id="admin-pin" placeholder="Enter Super Admin PIN " class="w-full p-4 border-2 border-amber-300 rounded-xl focus:ring-4 focus:ring-amber-500 outline-none font-bold text-slate-800">
+                <button onclick="verifyAdmin()" class="bg-amber-600 text-white px-8 py-3 rounded-xl font-black hover:bg-amber-700 transition shadow-lg">Access Admin Dashboard</button>
+            </div>
+            
+            <div id="admin-panel" class="hidden space-y-8 mt-6">
+                <div class="bg-amber-100 p-5 rounded-2xl border-2 border-amber-300 flex justify-between items-center flex-wrap gap-4 shadow">
+                    <span class="font-black text-amber-900 text-base">✨ Welcome Super Admin! Full database CRUD control enabled. PIN: KORUMILLI_2368</span>
+                    <button onclick="logoutAdmin()" class="bg-red-600 text-white px-5 py-2 rounded-xl text-sm font-black hover:bg-red-700 transition shadow">Logout</button>
+                </div>
+                
+                <form id="add-form" onsubmit="handleAdminSubmit(event)" class="bg-amber-50 p-6 rounded-2xl border-2 border-amber-200 grid md:grid-cols-2 gap-4 shadow-inner">
+                    <input type="hidden" id="edit-id" value="">
+                    <input type="hidden" id="form-mode" value="add">
+                    
+                    <select id="target-sheet" class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-bold text-slate-800 shadow md:col-span-2" onchange="updateFormPlaceholders()">
+                        <option value="Banners">Manage Banners / Images</option>
+                        <option value="Events">Manage Day-Wise Events</option>
+                        <option value="WorkAllocations">Manage Work Allocations</option>
+                        <option value="Donations">Manage Donations (Yearly)</option>
+                        <option value="FoodDistribution">Manage Food Distribution</option>
+                        <option value="FinancialTracker">Manage Financials & Interest</option>
+                        <option value="FlipBook">Manage Flip Book (Images & Notes)</option>
+                    </select>
+
+                    <div id="dynamic-fields-container" class="contents"></div>
+                    
+                    <div class="md:col-span-2 flex gap-4 mt-2">
+                        <button type="submit" id="submit-btn" class="flex-1 bg-green-600 text-white py-4 rounded-xl font-black text-lg hover:bg-green-700 transition shadow-xl">💾 Save Record to Database</button>
+                        <button type="button" id="cancel-edit-btn" onclick="resetFormMode()" class="hidden bg-slate-500 text-white px-8 py-4 rounded-xl font-black hover:bg-slate-600 transition shadow">Cancel Edit</button>
+                    </div>
+                </form>
+
+                <div class="mt-8 space-y-6">
+                    <h4 class="font-black text-amber-950 text-xl border-b-2 border-amber-200 pb-2">⚡ Quick Edit & Delete Records (Data-Wise)</h4>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-200 shadow"><h5 class="font-black text-amber-900 mb-3 text-base">Banners</h5><div id="admin-banners-list" class="space-y-2 max-h-48 overflow-y-auto text-sm"></div></div>
+                        <div class="bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-200 shadow"><h5 class="font-black text-amber-900 mb-3 text-base">Events</h5><div id="admin-events-list" class="space-y-2 max-h-48 overflow-y-auto text-sm"></div></div>
+                        <div class="bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-200 shadow"><h5 class="font-black text-amber-900 mb-3 text-base">Work Tasks</h5><div id="admin-work-list" class="space-y-2 max-h-48 overflow-y-auto text-sm"></div></div>
+                        <div class="bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-200 shadow"><h5 class="font-black text-amber-900 mb-3 text-base">Donations</h5><div id="admin-donations-list" class="space-y-2 max-h-48 overflow-y-auto text-sm"></div></div>
+                        <div class="bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-200 shadow"><h5 class="font-black text-amber-900 mb-3 text-base">Food Logs</h5><div id="admin-food-list" class="space-y-2 max-h-48 overflow-y-auto text-sm"></div></div>
+                        <div class="bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-200 shadow"><h5 class="font-black text-amber-900 mb-3 text-base">Financials</h5><div id="admin-finance-list" class="space-y-2 max-h-48 overflow-y-auto text-sm"></div></div>
+                        <div class="bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-200 shadow"><h5 class="font-black text-amber-900 mb-3 text-base">Flip Book</h5><div id="admin-flipbook-list" class="space-y-2 max-h-48 overflow-y-auto text-sm"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer with Real Animated Icons -->
+    <footer class="bg-amber-950 text-amber-100 mt-16 border-t border-amber-500/30 shadow-inner relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-600/10 via-transparent to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-12 text-center relative z-10">
+            <div class="mb-6">
+                <h3 class="text-xl md:text-2xl font-extrabold text-amber-300 tracking-wide drop-shadow">
+                    🕉️ Vinayaka Chavithi Community Portal
+                </h3>
+                <p class="text-amber-200/80 text-sm mt-2 font-medium">
+                    Celebrating Lord Ganesha • Devotion • Community • Togetherness
+                </p>
+            </div>
+
+            <div class="flex justify-center items-center gap-5 mb-8 flex-wrap">
+                <a href="https://wa.me/?text=Check%20out%20the%20Vinayaka%20Chavithi%20Community%20Portal!" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" class="social-btn group relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-green-700 text-white shadow-[0_4px_20px_rgba(34,197,94,0.4)] transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-1 hover:shadow-[0_6px_25px_rgba(34,197,94,0.7)]">
+                    <i class="fab fa-whatsapp text-2xl transition-transform duration-300 group-hover:rotate-12"></i>
+                    <span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] bg-black/80 text-white px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">WhatsApp</span>
+                </a>
+
+                <a href="#" aria-label="Visit Instagram" class="social-btn group relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white shadow-[0_4px_20px_rgba(236,72,153,0.4)] transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-1 hover:shadow-[0_6px_25px_rgba(236,72,153,0.7)]">
+                    <i class="fab fa-instagram text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"></i>
+                    <span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] bg-black/80 text-white px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">Instagram</span>
+                </a>
+
+                <a href="#" aria-label="Share on Facebook" class="social-btn group relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-[0_4px_20px_rgba(37,99,235,0.4)] transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-1 hover:shadow-[0_6px_25px_rgba(37,99,235,0.7)]">
+                    <i class="fab fa-facebook-f text-xl transition-transform duration-300 group-hover:-rotate-12"></i>
+                    <span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] bg-black/80 text-white px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">Facebook</span>
+                </a>
+
+                <a href="mailto:support@vinayakautsavalu.com" aria-label="Send Email" class="social-btn group relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-[0_4px_20px_rgba(245,158,11,0.4)] transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-1 hover:shadow-[0_6px_25px_rgba(245,158,11,0.7)]">
+                    <i class="fas fa-envelope text-xl transition-transform duration-300 group-hover:scale-110"></i>
+                    <span class="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] bg-black/80 text-white px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">Email Us</span>
+                </a>
+            </div>
+
+            <div class="max-w-md mx-auto border-t border-amber-500/20 mb-6"></div>
+
+            <p class="text-sm md:text-base text-amber-200">
+                © 2026
+                <span class="font-bold text-amber-300">Vinayaka Chavithi Community Portal</span>
+            </p>
+
+            <p class="text-sm mt-2 text-amber-300/90">
+                Developed with ❤️ by
+                <span class="font-extrabold text-amber-400 hover:text-amber-200 transition">SR Solutions</span>
+            </p>
+
+            <p class="mt-3 text-sm">
+                📞
+                <a href="tel:9390198031" class="text-amber-300 hover:text-white font-bold transition underline decoration-amber-500/50 hover:decoration-white">
+                    9390198031
+                </a>
+            </p>
+
+            <p class="mt-6 text-xs text-amber-400/80 tracking-widest uppercase font-semibold">
+                🙏 Ganapati Bappa Morya • Happy Vinayaka Chavithi 🙏
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Integration & Dynamic Data Handlers -->
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbx5sN09-yphJnFg7TcC3ql_WlEufiE5HcyCIu_XWcj0a3mxHGyzow-ySLR1TstjQCBj/exec";
+        let cachedData = { banners: [], events: [], work: [], donations: [], food: [], finance: [], flipbook: [] };
+        let currentBookPageIndex = 0;
+
+        async function fetchData() {
+            try {
+                let res = await fetch(`${API_URL}?action=getData`);
+                let data = await res.json();
+                cachedData = data;
+                renderBanners(data.banners);
+                renderEvents(data.events);
+                renderWork(data.work);
+                renderDonations(data.donations);
+                renderFood(data.food);
+                renderFinances(data.finance);
+                renderFlipBook(data.flipbook);
+                renderAdminLists();
+                calculateInterest();
+            } catch (err) {
+                console.error("Error fetching data:", err);
+            }
+        }
+
+        function calculateInterest() {
+            let p = parseFloat(document.getElementById("calc-principal").value) || 0;
+            let r = parseFloat(document.getElementById("calc-rate").value) || 0;
+            let t = parseFloat(document.getElementById("calc-years").value) || 0;
+            
+            // Compound interest calculation formula: A = P * (1 + r/100)^t
+            let total = p * Math.pow((1 + (r / 100)), t);
+            let interest = total - p;
+
+            document.getElementById("calc-result-interest").innerText = "₹" + interest.toFixed(2);
+            document.getElementById("calc-result-total").innerText = "₹" + total.toFixed(2);
+        }
+
+        function renderBanners(banners) {
+            let container = document.getElementById("carousel-track");
+            if (!banners || banners.length === 0) return;
+            
+            container.innerHTML = banners.map(b => `
+                <div class="min-w-full h-full relative">
+                    <img src="${b.imageUrl}" alt="Festival Banner" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=1200&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-8 text-white text-left">
+                        <span class="bg-amber-600 text-xs uppercase px-3 py-1 rounded-full font-extrabold w-max mb-2 tracking-wider shadow">Sri Vinayaka Utsavalu</span>
+                        <h3 class="text-2xl md:text-3xl font-black drop-shadow-md">Sri Vinayaka Festival Display</h3>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        let currentIndex = 0;
+        function updateCarousel() {
+            const track = document.getElementById('carousel-track');
+            if(!track) return;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            const track = document.getElementById('carousel-track');
+            if(!track) return;
+            currentIndex = (currentIndex + 1) % track.children.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            const track = document.getElementById('carousel-track');
+            if(!track) return;
+            currentIndex = (currentIndex - 1 + track.children.length) % track.children.length;
+            updateCarousel();
+        }
+
+        function currentSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        setInterval(nextSlide, 5000);
+
+        function renderEvents(events, filterDay = 'All') {
+            let container = document.getElementById("events-grid");
+            let days = [...new Set((events || []).map(e => e.dayNumber || 'Day 1'))].sort();
+            let filterHtml = `<button onclick="filterEvents('All')" class="px-4 py-2 bg-amber-600 text-white rounded-xl shadow hover:bg-amber-500 transition font-bold">All Days</button>`;
+            days.forEach(d => {
+                filterHtml += `<button onclick="filterEvents('${d}')" class="px-4 py-2 bg-amber-200 text-amber-950 rounded-xl shadow hover:bg-amber-300 transition font-bold">${d}</button>`;
+            });
+            document.getElementById("day-filter-buttons").innerHTML = filterHtml;
+
+            let filtered = filterDay === 'All' ? events : events.filter(e => String(e.dayNumber) === String(filterDay));
+            if (!filtered || filtered.length === 0) {
+                container.innerHTML = `<p class="text-amber-200 col-span-3 font-semibold">No events found for this day.</p>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(ev => `
+                <div class="bg-white/95 text-slate-800 rounded-2xl shadow-xl border-t-4 border-amber-500 overflow-hidden glass-hover flex flex-col justify-between">
+                    <div>
+                        ${ev.bannerImg ? `<img src="${ev.bannerImg}" alt="${ev.title}" class="w-full h-48 object-cover" onerror="this.style.display='none'">` : ''}
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-extrabold shadow-sm">${ev.dayNumber || 'Day 1'}</span>
+                                <span class="text-xs text-slate-500 font-bold">📅 ${ev.date}</span>
+                            </div>
+                            <h4 class="font-black text-xl text-slate-900">${ev.title}</h4>
+                            <p class="text-slate-700 text-sm mt-3 font-medium leading-relaxed">${ev.description}</p>
+                            ${ev.note ? `<p class="text-xs text-amber-700 bg-amber-50 p-2 rounded mt-3 border border-amber-200 font-bold">Note: ${ev.note}</p>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterEvents(day) { renderEvents(cachedData.events, day); }
+
+        function renderWork(workList) {
+            let tbody = document.getElementById("work-table");
+            if (!workList || workList.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-slate-500 font-semibold">No work allocations yet.</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = workList.map(w => `
+                <tr class="hover:bg-amber-50/80 transition">
+                    <td class="p-4 font-black text-slate-900">${w.taskName}</td>
+                    <td class="p-4 text-slate-700 font-semibold">${w.assignedTo}</td>
+                    <td class="p-4 text-slate-500 font-bold">${w.date}</td>
+                    <td class="p-4 font-extrabold text-amber-700">${w.status || 'Assigned'}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderDonations(donations) {
+            let yearFilterEl = document.getElementById("donation-year-filter");
+            let years = [...new Set((donations || []).map(d => d.year || '2026'))].sort().reverse();
+            let yearOptHtml = `<option value="All">All Years</option>`;
+            years.forEach(y => { yearOptHtml += `<option value="${y}">${y}</option>`; });
+            let selectedYear = yearFilterEl.value || 'All';
+            yearFilterEl.innerHTML = yearOptHtml;
+            yearFilterEl.value = selectedYear;
+
+            let filtered = selectedYear === 'All' ? donations : donations.filter(d => String(d.year) === String(selectedYear));
+            let tbody = document.getElementById("donations-table");
+            if (!filtered || filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-500 font-semibold">No donations recorded.</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = filtered.map(d => `
+                <tr class="hover:bg-amber-50/80 transition">
+                    <td class="p-4 font-black text-slate-900">${d.memberName}</td>
+                    <td class="p-4 text-green-700 font-black">₹${d.amount}</td>
+                    <td class="p-4 text-amber-900 font-extrabold">${d.year || '2026'}</td>
+                    <td class="p-4 text-slate-500 font-bold">${d.date}</td>
+                    <td class="p-4 text-slate-700 font-semibold">${d.gotraOrNotes || '-'}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderFood(foodList) {
+            let container = document.getElementById("food-grid");
+            if (!foodList || foodList.length === 0) {
+                container.innerHTML = `<p class="text-amber-200 col-span-2 font-semibold">No food distribution logs available.</p>`;
+                return;
+            }
+            container.innerHTML = foodList.map(f => `
+                <div class="bg-white/95 text-slate-800 rounded-2xl shadow-xl border-l-8 border-orange-500 overflow-hidden glass-hover">
+                    ${f.bannerImg ? `<img src="${f.bannerImg}" alt="${f.location}" class="w-full h-52 object-cover" onerror="this.style.display='none'">` : ''}
+                    <div class="p-6">
+                        <h4 class="font-black text-xl text-slate-900">${f.location}</h4>
+                        <p class="text-sm text-slate-500 font-bold mt-1">📅 ${f.date}</p>
+                        <p class="text-slate-700 mt-3 font-bold text-base">🍲 Beneficiaries Served: <span class="text-orange-600 font-black">${f.beneficiariesCount}</span></p>
+                        ${f.note ? `<p class="text-xs text-amber-700 bg-amber-50 p-2 rounded mt-3 border border-amber-200 font-bold">Note: ${f.note}</p>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderFinances(finances) {
+            let tbody = document.getElementById("finance-table");
+            if (!finances || finances.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-500 font-semibold">No financial records added yet.</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = finances.map(f => `
+                <tr class="hover:bg-amber-50/80 transition">
+                    <td class="p-4 font-black text-amber-950">${f.category}</td>
+                    <td class="p-4 text-green-700 font-black">₹${f.totalCollections || 0}</td>
+                    <td class="p-4 text-red-600 font-black">₹${f.totalExpenses || 0}</td>
+                    <td class="p-4 text-blue-700 font-black">₹${(Number(f.totalCollections || 0) - Number(f.totalExpenses || 0))}</td>
+                    <td class="p-4 text-purple-700 font-black">₹${f.interestAccrued || 0}</td>
+                    <td class="p-4 text-slate-700 font-medium text-sm">${f.notes || '-'}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderFlipBook(bookList) {
+            let container = document.getElementById("flipbook-pages");
+            let indicator = document.getElementById("page-indicator");
+            if (!bookList || bookList.length === 0) {
+                container.innerHTML = `
+                    <div class="book-page">
+                        <div class="text-center my-auto">
+                            <h4 class="text-2xl font-black text-amber-900 mb-2">Divine Memories Book</h4>
+                            <p class="text-slate-600 font-semibold">No images or notes uploaded yet. Use the Super Admin panel to add memories!</p>
+                        </div>
+                        <div class="text-right text-xs text-amber-800 font-bold">Page 1 of 1</div>
+                    </div>`;
+                if(indicator) indicator.innerText = "Page 1 of 1";
+                return;
+            }
+
+            if (currentBookPageIndex >= bookList.length) currentBookPageIndex = 0;
+
+            container.innerHTML = bookList.map((page, idx) => `
+                <div class="book-page absolute inset-0 transition-all duration-700 ${idx === currentBookPageIndex ? 'opacity-100 z-10 scale-100 pointer-events-auto' : 'opacity-0 z-0 scale-95 pointer-events-none'}">
+                    <div class="flex justify-between items-center border-b-2 border-amber-300 pb-2">
+                        <h4 class="text-xl font-black text-amber-950">${page.title || 'Festival Memory'}</h4>
+                        <span class="text-xs text-amber-800 font-bold">📅 ${page.date || '2026'}</span>
+                    </div>
+                    <div class="my-4">
+                        <img src="${page.imageUrl}" alt="${page.title || 'Memory'}" onerror="this.src='https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=600&q=80'">
+                    </div>
+                    <div class="bg-amber-100/80 p-3 rounded-xl border border-amber-300 text-slate-800 font-medium text-sm min-h-[60px]">
+                        <p>${page.note || 'Blessed moments of Vinayaka Chavithi Utsavalu.'}</p>
+                    </div>
+                    <div class="text-right text-xs text-amber-900 font-black">Page ${idx + 1} of ${bookList.length}</div>
+                </div>
+            `).join('');
+
+            if(indicator) indicator.innerText = `Page ${currentBookPageIndex + 1} of ${bookList.length}`;
+        }
+
+        function nextBookPage() {
+            let list = cachedData.flipbook || [];
+            if (list.length === 0) return;
+            currentBookPageIndex = (currentBookPageIndex + 1) % list.length;
+            renderFlipBook(list);
+        }
+
+        function prevBookPage() {
+            let list = cachedData.flipbook || [];
+            if (list.length === 0) return;
+            currentBookPageIndex = (currentBookPageIndex - 1 + list.length) % list.length;
+            renderFlipBook(list);
+        }
+
+        function renderAdminLists() {
+            ['banners', 'events', 'work', 'donations', 'food', 'finance', 'flipbook'].forEach(type => {
+                let listEl = document.getElementById(`admin-${type === 'finance' ? 'finance' : type + '-list'}`);
+                if (!listEl) return;
+                let dataKey = type === 'work' ? 'work' : type === 'finance' ? 'finance' : type;
+                listEl.innerHTML = (cachedData[dataKey] || []).map(item => `
+                    <div class="flex justify-between items-center bg-white p-3 rounded-xl shadow-sm border border-slate-200 text-slate-800">
+                        <span class="truncate max-w-[130px] font-bold">${item.title || item.taskName || item.memberName || item.location || item.category}</span>
+                        <div class="space-x-2">
+                            <button onclick='startEdit("${type === 'work' ? 'WorkAllocations' : type === 'finance' ? 'FinancialTracker' : type === 'flipbook' ? 'FlipBook' : type.charAt(0).toUpperCase() + type.slice(1)}", ${JSON.stringify(item)})' class="text-blue-600 font-black text-xs hover:underline">Edit</button>
+                            <button onclick='deleteRecord("${type === 'work' ? 'WorkAllocations' : type === 'finance' ? 'FinancialTracker' : type === 'flipbook' ? 'FlipBook' : type.charAt(0).toUpperCase() + type.slice(1)}", "${item.id}")' class="text-red-600 font-black text-xs hover:underline">Del</button>
+                        </div>
+                    </div>
+                `).join('') || '<p class="text-slate-400 text-xs font-semibold">No records available</p>';
+            });
+        }
+
+        function updateFormPlaceholders() {
+            let sheet = document.getElementById("target-sheet").value;
+            let container = document.getElementById("dynamic-fields-container");
+            
+            if (sheet === "Banners") {
+                container.innerHTML = `<input type="text" id="field-imageUrl" placeholder="Banner Image URL" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow md:col-span-2">`;
+            } else if (sheet === "Events") {
+                container.innerHTML = `
+                    <input type="text" id="field-title" placeholder="Event Title" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-date" placeholder="Date" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-bannerImg" placeholder="Event Banner Image URL" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-dayNumber" placeholder="Day Number (e.g., Day 1)" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <textarea id="field-description" placeholder="Event Description" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow md:col-span-2"></textarea>
+                    <input type="text" id="field-note" placeholder="Special Note (Optional)" class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow md:col-span-2">
+                `;
+            } else if (sheet === "FoodDistribution") {
+                container.innerHTML = `
+                    <input type="text" id="field-location" placeholder="Location Name" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-date" placeholder="Date" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-bannerImg" placeholder="Food / Distribution Banner Image URL" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-beneficiariesCount" placeholder="Beneficiaries Count" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-note" placeholder="Special Note (Optional)" class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow md:col-span-2">
+                `;
+            } else if (sheet === "WorkAllocations") {
+                container.innerHTML = `
+                    <input type="text" id="field-taskName" placeholder="Task Name" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-date" placeholder="Date" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-assignedTo" placeholder="Assigned To" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-status" placeholder="Status" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-note" placeholder="Note (Optional)" class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow md:col-span-2">
+                `;
+            } else if (sheet === "Donations") {
+                container.innerHTML = `
+                    <input type="text" id="field-memberName" placeholder="Member Name" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-amount" placeholder="Amount (₹)" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-year" placeholder="Year (e.g. 2026)" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-gotraOrNotes" placeholder="Gotra / Notes" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                `;
+            } else if (sheet === "FinancialTracker") {
+                container.innerHTML = `
+                    <input type="text" id="field-category" placeholder="Category / Year" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-totalCollections" placeholder="Total Collections (₹)" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-totalExpenses" placeholder="Total Expenses (₹)" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-interestAccrued" placeholder="Interest Accrued (₹)" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-notes" placeholder="Notes" class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow md:col-span-2">
+                `;
+            } else if (sheet === "FlipBook") {
+                container.innerHTML = `
+                    <input type="text" id="field-title" placeholder="Memory Title" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-date" placeholder="Date (e.g. Sep 2026)" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow">
+                    <input type="text" id="field-imageUrl" placeholder="Image URL" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow md:col-span-2">
+                    <textarea id="field-note" placeholder="Memory Note / Description" required class="p-3.5 border-2 border-amber-300 rounded-xl bg-white font-semibold text-slate-800 shadow md:col-span-2"></textarea>
+                `;
+            }
+        }
+
+        function startEdit(sheetName, item) {
+            document.getElementById("target-sheet").value = sheetName;
+            updateFormPlaceholders();
+            document.getElementById("form-mode").value = "update";
+            document.getElementById("edit-id").value = item.id;
+            document.getElementById("submit-btn").innerText = "🔄 Update Record";
+            document.getElementById("cancel-edit-btn").classList.remove("hidden");
+            
+            setTimeout(() => {
+                for (let key in item) {
+                    let inputEl = document.getElementById(`field-${key}`);
+                    if (inputEl) inputEl.value = item[key];
+                }
+            }, 50);
+
+            window.scrollTo({ top: document.getElementById("admin").offsetTop, behavior: 'smooth' });
+        }
+
+        function resetFormMode() {
+            document.getElementById("form-mode").value = "add";
+            document.getElementById("edit-id").value = "";
+            document.getElementById("submit-btn").innerText = "💾 Save Record to Database";
+            document.getElementById("cancel-edit-btn").classList.add("hidden");
+            document.getElementById("add-form").reset();
+            updateFormPlaceholders();
+        }
+
+        function verifyAdmin() {
+            let pin = document.getElementById("admin-pin").value;
+            if (pin === "KORUMILLI_2368") {
+                document.getElementById("admin-login-box").classList.add("hidden");
+                document.getElementById("admin-panel").classList.remove("hidden");
+                updateFormPlaceholders();
+            } else { alert("Incorrect Admin PIN!"); }
+        }
+
+        function logoutAdmin() {
+            document.getElementById("admin-pin").value = "";
+            document.getElementById("admin-panel").classList.add("hidden");
+            document.getElementById("admin-login-box").classList.remove("hidden");
+            resetFormMode();
+        }
+
+        async function handleAdminSubmit(e) {
+            e.preventDefault();
+            let sheetName = document.getElementById("target-sheet").value;
+            let mode = document.getElementById("form-mode").value;
+            let recordId = document.getElementById("edit-id").value;
+
+            let payload = {};
+            let inputs = document.querySelectorAll("#dynamic-fields-container input, #dynamic-fields-container textarea");
+            inputs.forEach(input => {
+                let key = input.id.replace("field-", "");
+                payload[key] = input.value;
+            });
+
+            if (sheetName === "Banners") {
+                payload.title = "Banner Display";
+            } else if (sheetName === "Donations") {
+                payload.date = new Date().toLocaleDateString();
+            }
+
+            if (mode === "update") payload.id = recordId;
+
+            try {
+                let res = await fetch(API_URL, {
+                    method: "POST",
+                    body: JSON.stringify({ secretKey: "KORUMILLI_2368", sheetName: sheetName, action: mode, payload: payload })
+                });
+                let result = await res.json();
+                if (result.status === "success") {
+                    alert(mode === "update" ? "Successfully updated!" : "Successfully added!");
+                    resetFormMode();
+                    fetchData();
+                } else { alert("Error: " + result.message); }
+            } catch(err) { alert("Operation failed."); }
+        }
+
+        async function deleteRecord(sheetName, id) {
+            if (!confirm("Are you sure you want to delete this record?")) return;
+            try {
+                let res = await fetch(API_URL, {
+                    method: "POST",
+                    body: JSON.stringify({ secretKey: "KORUMILLI_2368", sheetName: sheetName, action: "delete", payload: { id: id } })
+                });
+                let result = await res.json();
+                if (result.status === "success") { alert("Deleted successfully!"); fetchData(); }
+                else { alert("Error: " + result.message); }
+            } catch(err) { alert("Delete failed."); }
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
