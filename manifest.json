@@ -1,0 +1,21 @@
+{
+    "name": "Vinayaka Seva Community",
+    "short_name": "Vinayaka Seva",
+    "description": "Community Management System & Mooshika AI",
+    "start_url": "/INDEX.HTML",
+    "display": "standalone",
+    "background_color": "#78350f",
+    "theme_color": "#78350f",
+    "icons": [
+      {
+        "src": "LOGO.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "LOGO.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
