@@ -1,6 +1,6 @@
 const CACHE_NAME = 'vinayaka-seva-v1';
 const ASSETS_TO_CACHE = [
-  '/INDEX.HTML',
+  '/index.html',
   '/manifest.json',
   '/LOGO.png',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css',
