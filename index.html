@@ -10,14 +10,17 @@
     <link rel="manifest" href="manifest.json">
 
     <link rel="icon" type="image/png" href="LOGO.png">
-    <title data-i18n="pageTitle">swarna ganapathi swami - Community Management</title>
+    <title data-i18n="pageTitle">Swarna Ganapathi Swami - Community</title>
     
     <!-- External Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- jQuery and Turn.js for Real 3D Book Experience -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+    
+    <!-- Markdown Parsers for AI Chat -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
 
@@ -88,8 +91,6 @@
                        </g>
                        <g class="drum-stick drum-stick-1"><line x1="58" y1="90" x2="82" y2="118" class="stick"/></g>
                        <g class="drum-stick drum-stick-2"><line x1="122" y1="90" x2="98" y2="118" class="stick"/></g>
-                       <circle cx="82" cy="118" r="6.5" fill="#c88962" stroke="#5a2e19" stroke-width="1.5"/>
-                       <circle cx="98" cy="118" r="6.5" fill="#c88962" stroke="#5a2e19" stroke-width="1.5"/>
                    </svg>
                    <span class="rat-label" data-i18n="drumRat">డోలు (🥁)</span>
                </div>
@@ -177,7 +178,6 @@
                
                <div class="festival-title flex flex-col items-center justify-center relative">
                    <div class="title-light"></div>
-                   <!-- Using the specific logo requirement as the main header branding -->
                    <img src="ganesh.png" alt="Vinayaka Seva Logo" class="h-10 md:h-14 mb-1 drop-shadow-lg z-10" onerror="this.style.display='none'">
                    <h1 class="text-xl md:text-3xl font-black text-amber-300 drop-shadow-md z-10" data-i18n="appTitle"> స్వర్ణ గణపతి స్వామి వారి - ఉత్సవాల వేదిక </h1>
                </div>
@@ -309,12 +309,13 @@
                    <a href="#banners" class="hover:text-amber-300 transition whitespace-nowrap" data-i18n="navBanners">బ్యానర్లు</a>
                    <a href="#events" class="hover:text-amber-300 transition whitespace-nowrap" data-i18n="navEvents">కార్యక్రమాలు</a>
                    <a href="#donations" class="hover:text-amber-300 transition whitespace-nowrap" data-i18n="navDonations">విరాళాలు</a>
-                   <!-- New Flipbook Anchor -->
                    <button data-action="openFlipbook" class="text-amber-400 hover:text-white transition whitespace-nowrap drop-shadow-md font-bold"><i class="fas fa-book-open mr-1"></i> <span data-i18n="navFlipbook">ఫ్లిప్‌బుక్</span></button>
                </nav>
+               
+               <!-- MULTILINGUAL LANGUAGE SWITCHER -->
                <div id="language-switcher" class="bg-amber-900 border border-amber-400/50 rounded-xl px-1.5 py-1 flex items-center gap-1 text-xs font-black">
-                   <button type="button" id="lang-btn-te" data-action="setLangTe" class="px-2.5 py-1 rounded-lg bg-amber-500 text-amber-950 transition">తెలుగు</button>
-                   <button type="button" id="lang-btn-en" data-action="setLangEn" class="px-2.5 py-1 rounded-lg text-amber-200 hover:text-white transition">English</button>
+                   <button type="button" id="lang-btn-te" data-action="setLangTe" class="px-2.5 py-1 rounded-lg transition">తెలుగు</button>
+                   <button type="button" id="lang-btn-en" data-action="setLangEn" class="px-2.5 py-1 rounded-lg transition">English</button>
                </div>
                
                <!-- AUTH BUTTONS -->
@@ -399,14 +400,14 @@
                     <div class="ganesha-light"></div>
                     <div class="ganesha-light-inner"></div>
                     <div class="ganesha-logo-container">
-                        <img src="LOGO.png" alt="Lord Ganesha" class="ganesha-logo" onerror="this.src='https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=200&q=80'" />
+                        <img src="kling.gif" alt="Lord Ganesha" class="ganesha-logo" onerror="this.src='https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=200&q=80'" />
                     </div>
                 </div>
                 <div class="divine-modak modak-medium modak-3" title="Prasadam Modak"><span>🥮</span></div>
                 <div class="divine-modak modak-small modak-4" title="Prasadam Modak"><span>🥮</span></div>
             </div>
             
-            <h2 class="text-2xl md:text-5xl font-black mb-2 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)] text-amber-100 tracking-wider divine-mantra" data-i18n="divineMantra">ఓం గం గణపతయే నమః 🙏</h2>
+            <h2 class="text-2xl md:text-5xl font-black mb-2 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)] text-amber-100 tracking-wider divine-mantra">ఓం గం గణపతయే నమః 🙏</h2>
             <p class="text-amber-200 text-xs md:text-sm font-semibold mb-6 uppercase tracking-widest bg-amber-900/60 py-1.5 px-4 rounded-full inline-block border border-amber-400/40 shadow-md" data-i18n="tagline2">శ్రీ వినాయక చవితి మహోత్సవాల ప్రత్యక్ష సమాచార వేదిక</p>
             
           <!-- Banner Section Integration inside INDEX.HTML -->
@@ -528,7 +529,7 @@
                 <div class="flex items-center gap-3">
                     <!-- Global Year Filter for Public View -->
                     <div class="bg-amber-900/80 p-2 rounded-xl border border-amber-500/30 flex items-center shadow-inner">
-                        <label class="text-amber-400 font-bold text-xs pl-2 pr-2"><i class="fas fa-calendar-day mr-1"></i> <span data-i18n="yearLbl">Year:</span></label>
+                        <label class="text-amber-400 font-bold text-xs pl-2 pr-2"><i class="fas fa-calendar-day mr-1"></i> <span data-i18n="yearLbl">Financial Year:</span></label>
                         <select id="public-year-filter" data-action="filterPublicTable" class="bg-amber-950 text-white font-bold p-1 rounded-lg border border-amber-600 focus:outline-none text-xs cursor-pointer">
                             <option value="all">All Years</option>
                             <!-- Dynamically filled from 2000 to Current via JS -->
@@ -582,10 +583,10 @@
                 <div class="glass-panel p-6 rounded-2xl shadow-xl flex flex-wrap justify-between items-center gap-4">
                     <div>
                         <h2 class="text-2xl font-black text-amber-300"><span data-i18n="welcomeBack">Welcome</span>, <span id="admin-user-name">Admin</span></h2>
-                        <p class="text-amber-100 text-sm font-semibold" data-i18n="sysOverviewLbl">System Overview & Database Engine</p>
+                        <p class="text-amber-100 text-sm font-semibold" data-i18n="sysOverviewLbl">System Overview & Year-Wise Ledger Engine</p>
                     </div>
                     <div class="flex items-center gap-3 bg-amber-900/80 p-2 rounded-xl border border-amber-500/30 shadow-inner">
-                        <label class="text-amber-400 font-bold text-sm pl-2"><i class="fas fa-calendar-day mr-1"></i> <span data-i18n="yearLbl">Year:</span></label>
+                        <label class="text-amber-400 font-bold text-sm pl-2"><i class="fas fa-calendar-day mr-1"></i> <span data-i18n="yearLbl">Financial Year:</span></label>
                         <select id="global-year-filter" data-action="handleAdminYearChange" class="bg-amber-950 text-white font-bold p-1.5 rounded-lg border border-amber-600 focus:outline-none cursor-pointer">
                             <option value="all">All Years</option>
                             <!-- JS fills 2000 -> Current -->
@@ -623,6 +624,7 @@
             </div>
         </div>
     </main>
+
 <!-- ================= COMMUNITY INTEREST CALCULATOR ================= -->
 <div class="glass-panel p-6 rounded-2xl shadow-xl mt-6 border-2 border-amber-500/40 space-y-4">
     <h3 class="text-xl font-black text-amber-400 border-b border-amber-500/30 pb-2 flex items-center gap-2">
@@ -665,6 +667,7 @@
         </div>
     </div>
 </div>
+
     <!-- ADMIN DYNAMIC CRUD MODAL -->
     <div id="crud-modal" class="hidden fixed inset-0 z-[110] flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
         <div class="glass-panel p-6 md:p-8 rounded-2xl w-full max-w-3xl shadow-[0_0_40px_rgba(0,0,0,0.8)] border-2 border-amber-500/50 relative max-h-[90vh] flex flex-col transform transition-transform">
@@ -672,9 +675,9 @@
             
             <h2 id="crud-modal-title" class="text-2xl font-black text-amber-400 mb-6 border-b border-amber-500/30 pb-3" data-i18n="recordMgmtTitle">Record Management</h2>
             
-            <!-- Notice about historical dates -->
+            <!-- Notice about historical dates & Financial Years -->
             <div class="bg-blue-900/30 border-l-4 border-blue-500 p-3 mb-4 rounded text-xs text-blue-200">
-                <i class="fas fa-info-circle mr-1"></i> <strong>Admin Notice:</strong> Date fields (like createdAt or eventDate) map this record to a specific year in the 2000-2026 calendar. Set the date correctly for historical entry.
+                <i class="fas fa-info-circle mr-1"></i> <strong>Admin Notice:</strong> Always set the <b>financialYear</b> (e.g., 2025, 2026) correctly. This ensures the record appears in the correct yearly ledger and calculate accurate carry-forward balances.
             </div>
 
             <div id="crud-form-fields" class="grid grid-cols-1 md:grid-cols-2 gap-5 overflow-y-auto pr-2 mb-4 p-2 custom-scrollbar">
@@ -687,6 +690,7 @@
             </div>
         </div>
     </div>
+
 <!-- ================= 3D FLIPBOOK FULLSCREEN MODAL ================= -->
 <div id="flipbook-modal" class="hidden fixed inset-0 z-[120] bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center p-4 md:p-8">
         
@@ -720,9 +724,10 @@
     </div>
 </div>
 
-    <!-- ================= MOOSHIKA AI RAT WIDGET ================= -->
+    <!-- ================= MUSIKA AI RAT WIDGET ================= -->
     <div class="mooshika-widget z-[99990]">
-        <button id="mooshika-rat-btn" class="mooshika-rat-button" type="button" aria-label="Open Mooshika AI" data-action="toggleChat">
+        <!-- Action changed to toggleChat matching the new unbreakable interceptor -->
+        <button id="mooshika-rat-btn" class="mooshika-rat-button" type="button" aria-label="Open Musika AI" data-action="toggleChat">
             <div class="mooshika-ai-ring"></div>
             <!-- Rat SVG -->
             <svg class="mooshika-rat" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
@@ -731,6 +736,7 @@
             <span class="mooshika-status">AI</span>
         </button>
     </div>
+
    <!-- ================= DEDICATED FLIPBOOK ARCHIVE SECTION ================= -->
    <section id="flipbook-archive-section" class="glass-panel p-6 md:p-8 rounded-2xl shadow-2xl border-2 border-amber-400/60 space-y-6">
     <div class="flex justify-between items-center flex-wrap gap-4 border-b border-amber-500/30 pb-4">
@@ -743,7 +749,7 @@
         
         <!-- Year Filter for FlipBook Section -->
         <div class="flex items-center gap-2 bg-amber-900/80 p-2 rounded-xl border border-amber-500/30 shadow-inner">
-            <label class="text-amber-400 font-bold text-xs pl-2"><i class="fas fa-calendar-alt mr-1"></i> Year:</label>
+            <label class="text-amber-400 font-bold text-xs pl-2"><i class="fas fa-calendar-alt mr-1"></i> <span data-i18n="yearLbl">Financial Year:</span></label>
             <select id="section-flipbook-year" data-action="filterFlipbookSection" class="bg-amber-950 text-white font-bold p-1.5 rounded-lg border border-amber-600 text-xs outline-none cursor-pointer">
                 <option value="all">All Years</option>
             </select>
@@ -757,6 +763,8 @@
         </div>
     </div>
 </section>
+
+    <!-- ================= ADVANCED FINANCIAL MANAGEMENT SECTION ================= -->
     <section id="financial-calculator" class="financial-section">
         <div class="financial-container">
     
@@ -768,12 +776,11 @@
                     </span>
     
                     <h2 class="financial-title">
-                        Financial Calculator
+                        Ledger & Calculator
                     </h2>
     
                     <p class="financial-subtitle">
-                        Calculate income, donations, expenses and balance
-                        based on amount and date.
+                        Calculate income, donations, pooja/grocery expenses, and closing balances year-wise.
                     </p>
                 </div>
             </div>
@@ -782,75 +789,38 @@
             <div class="financial-filter-card">
     
                 <div class="financial-field">
-                    <label for="finance-start-date">
-                        From Date
-                    </label>
-    
-                    <input
-                        type="date"
-                        id="finance-start-date"
-                        class="financial-input"
-                    >
+                    <label for="finance-start-date">From Date</label>
+                    <input type="date" id="finance-start-date" class="financial-input">
                 </div>
     
                 <div class="financial-field">
-                    <label for="finance-end-date">
-                        To Date
-                    </label>
-    
-                    <input
-                        type="date"
-                        id="finance-end-date"
-                        class="financial-input"
-                    >
+                    <label for="finance-end-date">To Date</label>
+                    <input type="date" id="finance-end-date" class="financial-input">
                 </div>
     
                 <div class="financial-field">
-                    <label for="finance-year">
-                        Year
-                    </label>
-    
-                    <select
-                        id="finance-year"
-                        class="financial-input"
-                    >
+                    <label for="finance-year">Financial Year</label>
+                    <select id="finance-year" class="financial-input">
                         <option value="all">All Years</option>
                     </select>
                 </div>
     
                 <div class="financial-field">
-                    <label for="finance-type">
-                        Transaction Type
-                    </label>
-    
-                    <select
-                        id="finance-type"
-                        class="financial-input"
-                    >
+                    <label for="finance-type">Transaction Type</label>
+                    <select id="finance-type" class="financial-input">
                         <option value="all">All Transactions</option>
-                        <option value="income">Income</option>
-                        <option value="donation">Donations</option>
-                        <option value="expense">Expenses</option>
+                        <option value="income">Income (Donations)</option>
+                        <option value="donation">Verified Donations Only</option>
+                        <option value="expense">Expenses (Groceries, Pooja, Rent)</option>
                     </select>
                 </div>
     
                 <div class="financial-actions">
-                    <button
-                        type="button"
-                        id="finance-calculate-btn"
-                        class="finance-btn finance-btn-primary"
-                    >
-                        <i class="fas fa-calculator"></i>
-                        Calculate
+                    <button type="button" id="finance-calculate-btn" class="finance-btn finance-btn-primary">
+                        <i class="fas fa-calculator"></i> Calculate
                     </button>
-    
-                    <button
-                        type="button"
-                        id="finance-reset-btn"
-                        class="finance-btn finance-btn-secondary"
-                    >
-                        <i class="fas fa-rotate-left"></i>
-                        Reset
+                    <button type="button" id="finance-reset-btn" class="finance-btn finance-btn-secondary">
+                        <i class="fas fa-rotate-left"></i> Reset
                     </button>
                 </div>
     
@@ -860,94 +830,62 @@
             <div class="financial-summary-grid">
     
                 <div class="finance-card finance-income">
-                    <div class="finance-card-icon">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-    
+                    <div class="finance-card-icon"><i class="fas fa-arrow-down"></i></div>
                     <div>
                         <span>Total Income</span>
-                        <strong id="finance-total-income">
-                            ₹0.00
-                        </strong>
+                        <strong id="finance-total-income">₹0.00</strong>
                     </div>
                 </div>
     
                 <div class="finance-card finance-donation">
-                    <div class="finance-card-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-    
+                    <div class="finance-card-icon"><i class="fas fa-hand-holding-heart"></i></div>
                     <div>
                         <span>Total Donations</span>
-                        <strong id="finance-total-donations">
-                            ₹0.00
-                        </strong>
+                        <strong id="finance-total-donations">₹0.00</strong>
                     </div>
                 </div>
     
                 <div class="finance-card finance-expense">
-                    <div class="finance-card-icon">
-                        <i class="fas fa-arrow-up"></i>
-                    </div>
-    
+                    <div class="finance-card-icon"><i class="fas fa-arrow-up"></i></div>
                     <div>
                         <span>Total Expenses</span>
-                        <strong id="finance-total-expenses">
-                            ₹0.00
-                        </strong>
+                        <strong id="finance-total-expenses">₹0.00</strong>
                     </div>
                 </div>
     
                 <div class="finance-card finance-balance">
-                    <div class="finance-card-icon">
-                        <i class="fas fa-wallet"></i>
-                    </div>
-    
+                    <div class="finance-card-icon"><i class="fas fa-wallet"></i></div>
                     <div>
                         <span>Net Balance</span>
-                        <strong id="finance-net-balance">
-                            ₹0.00
-                        </strong>
+                        <strong id="finance-net-balance">₹0.00</strong>
                     </div>
                 </div>
     
             </div>
     
-            <!-- BALANCE CALCULATION -->
+            <!-- BALANCE CALCULATION (CARRY FORWARD) -->
             <div class="balance-calculation-card">
     
                 <div class="balance-row">
-                    <span>Opening Balance</span>
-    
-                    <strong id="finance-opening-balance">
-                        ₹0.00
-                    </strong>
+                    <span>Opening Balance (From Previous Year)</span>
+                    <strong id="finance-opening-balance">₹0.00</strong>
                 </div>
     
                 <div class="balance-row positive">
-                    <span>+ Total Income</span>
-    
-                    <strong id="finance-balance-income">
-                        ₹0.00
-                    </strong>
+                    <span>+ Total Income (Current Year)</span>
+                    <strong id="finance-balance-income">₹0.00</strong>
                 </div>
     
                 <div class="balance-row negative">
-                    <span>- Total Expenses</span>
-    
-                    <strong id="finance-balance-expense">
-                        ₹0.00
-                    </strong>
+                    <span>- Total Expenses (Current Year)</span>
+                    <strong id="finance-balance-expense">₹0.00</strong>
                 </div>
     
                 <div class="balance-divider"></div>
     
                 <div class="balance-row final">
-                    <span>Closing Balance</span>
-    
-                    <strong id="finance-closing-balance">
-                        ₹0.00
-                    </strong>
+                    <span>Available Closing Balance</span>
+                    <strong id="finance-closing-balance">₹0.00</strong>
                 </div>
     
             </div>
@@ -956,38 +894,21 @@
             <div class="financial-table-card">
     
                 <div class="financial-table-header">
-    
                     <div>
-                        <h3>
-                            <i class="fas fa-list"></i>
-                            Financial Transactions
-                        </h3>
-    
-                        <span id="finance-record-count">
-                            0 transactions
-                        </span>
+                        <h3><i class="fas fa-list"></i> Financial Ledger</h3>
+                        <span id="finance-record-count">0 transactions</span>
                     </div>
-    
                     <div class="financial-search">
-    
-                        <input
-                            type="search"
-                            id="finance-search"
-                            placeholder="Search transactions..."
-                        >
-    
+                        <input type="search" id="finance-search" placeholder="Search transactions...">
                     </div>
-    
                 </div>
     
                 <div class="financial-table-wrapper">
-    
                     <table class="financial-table">
-    
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Reference</th>
+                                <th>Category / Ref</th>
                                 <th>Description</th>
                                 <th>Type</th>
                                 <th>Income</th>
@@ -995,48 +916,31 @@
                                 <th>Balance</th>
                             </tr>
                         </thead>
-    
                         <tbody id="finance-transactions-body">
-                            <tr>
-                                <td colspan="7" class="finance-empty">
-                                    No financial records available.
-                                </td>
-                            </tr>
+                            <tr><td colspan="7" class="finance-empty">No financial records available.</td></tr>
                         </tbody>
-    
                     </table>
-    
                 </div>
-    
             </div>
     
             <!-- MONTHLY SUMMARY -->
             <div class="monthly-summary-card">
-    
                 <div class="monthly-summary-header">
-                    <h3>
-                        <i class="fas fa-chart-column"></i>
-                        Monthly Financial Summary
-                    </h3>
+                    <h3><i class="fas fa-chart-column"></i> Monthly Financial Summary</h3>
                 </div>
-    
-                <div
-                    id="monthly-financial-summary"
-                    class="monthly-summary-grid"
-                >
-                </div>
-    
+                <div id="monthly-financial-summary" class="monthly-summary-grid"></div>
             </div>
     
         </div>
     </section>
-    <!-- CHAT BOX MODAL -->
+
+    <!-- CHAT BOX MODAL (MUSIKA AI) -->
     <div id="chat-box" class="hidden w-[320px] sm:w-[380px] bg-amber-950/95 border-4 border-amber-400 text-white rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[500px] mb-3 backdrop-blur-md fixed bottom-[110px] right-6 z-[99998]">
         <div class="bg-amber-900 p-3.5 border-b border-amber-600 flex justify-between items-center shadow-md">
             <div class="flex items-center gap-2">
                 <span class="text-2xl">🐭</span>
                 <div>
-                    <h4 class="font-black text-sm text-amber-200" data-i18n="mooshikaBrain">మూషిక AI (Mooshika Brain)</h4>
+                    <h4 class="font-black text-sm text-amber-200" data-i18n="mooshikaBrain">Musika AI</h4>
                     <span class="text-[10px] text-green-400 font-bold block"><i class="fas fa-circle text-[8px] mr-1"></i>Live Database Memory Active</span>
                 </div>
             </div>
@@ -1047,11 +951,11 @@
         </div>
         <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs leading-relaxed custom-scrollbar bg-amber-950/50">
             <div class="bg-amber-900/80 p-3 rounded-xl border border-amber-500/30 shadow-sm" data-i18n="aiGreeting">
-                🙏 జై గణేశా! నేను మీ మూషిక AI. విరాళాలు, పూజా కార్యక్రమాలు లేదా అన్నదానం గురించిన సమాచారం కోసం నన్ను అడగండి.
+                🙏 Jai Ganesha! I am Musika AI. Ask me about donations, year-wise comparisons, expenses, or current balance.
             </div>
         </div>
         <div id="typing-indicator" class="hidden px-4 pb-2 text-amber-400/80 text-[10px] font-bold">
-            Mooshika is thinking
+            Musika is thinking
             <span class="typing-dots"><span></span><span></span><span></span></span>
         </div>
         
@@ -1061,7 +965,7 @@
                 <i class="fas fa-microphone"></i>
                 <span id="voice-pulse" class="hidden absolute inset-0 rounded-xl border-2 border-red-500 animate-ping"></span>
             </button>
-            <input type="text" id="chat-input" placeholder="Ask in Telugu or English..." class="flex-1 p-2.5 bg-amber-950 border border-amber-500 rounded-xl text-white text-xs outline-none focus:border-amber-300 shadow-inner">
+            <input type="text" id="chat-input" placeholder="Ask here..." class="flex-1 p-2.5 bg-amber-950 border border-amber-500 rounded-xl text-white text-xs outline-none focus:border-amber-300 shadow-inner">
             <button id="btn-chat-send" data-action="sendChat" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-amber-950 font-black px-4 py-2.5 rounded-xl text-xs transition shadow-lg">
                 <i class="fas fa-paper-plane"></i>
             </button>
@@ -1071,7 +975,7 @@
         </div>
     </div>
 
-    <!-- LINK EXTERNALLY TO OY.JS -->
-    <script src="OY.JS" defer></script>
+    <!-- LINK EXTERNALLY TO OY.JS (Cache Busting v3 included) -->
+    <script src="OY.JS?v=3" defer></script>
 </body>
 </html>
