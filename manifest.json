@@ -2,7 +2,7 @@
     "name": "Vinayaka Seva Community",
     "short_name": "Vinayaka Seva",
     "description": "Community Management System & Mooshika AI",
-    "start_url": "/INDEX.HTML",
+    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#78350f",
     "theme_color": "#78350f",
