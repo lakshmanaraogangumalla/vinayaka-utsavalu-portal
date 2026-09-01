@@ -1,8 +1,10 @@
-const CACHE_NAME = 'vinayaka-seva-v1';
+const CACHE_NAME = 'vinayaka-seva-v2';
 const ASSETS_TO_CACHE = [
-  '/index.html',
-  '/manifest.json',
-  '/LOGO.png',
+  './index.html',
+  './manifest.json',
+  './LOGO.png',
+  './OY.CSS',
+  './OY.JS',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css',
   'https://cdn.tailwindcss.com',
   'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
