@@ -175,7 +175,7 @@ const i18n = {
     en: {
         pageTitle: "Swarna Ganapathi Swami - Community", navBanners: "Banners", navEvents: "Events", navDonations: "Donations", navFlipbook: "FlipBook Archive",
         loginBtn: "Login", adminBtn: "Admin", logoutBtn: "Logout", drumRat: "Drum (🥁)", fluteRat: "Flute (🪈)", prayRat: "Pray 🙏",
-        appTitle: "Vinayaka Seva - Festival Portal", tagline2: "Live Information Portal for Sri Vinayaka Chavithi",
+        appTitle: "Swarna Ganapathi Swamy festival celebrations", tagline2: "Live Information Portal for Sri Vinayaka Chavithi",
         onlineDonation: "Online Donation (Direct UPI Checkout)", devoteeName: "Devotee Name", phoneNumber: "Phone Number", amountLbl: "Amount (₹)",
         genQR: "Generate QR Code", scanLbl: "Scan using PhonePe, Google Pay, or Paytm", submitVerification: "Submit Verification",
         publicDbTitle: "📋 Public Database", yearLbl: "Financial Year:", welcomeBack: "Welcome", userDashDesc: "Track your donations and community activities.",
