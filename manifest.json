@@ -1,21 +1,15 @@
 {
-    "name": "Vinayaka Seva Community",
-    "short_name": "Vinayaka Seva",
-    "description": "Community Management System & Mooshika AI",
-    "start_url": "./index.html",
-    "display": "standalone",
-    "background_color": "#78350f",
-    "theme_color": "#78350f",
-    "icons": [
-      {
-        "src": "LOGO.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "LOGO.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ]
+  "id": "./",
+  "name": "Swarna Ganapathi Committee",
+  "short_name": "Ganapathi",
+  "description": "Committee records, yearly accounts, events and the Musika assistant.",
+  "lang": "te",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#180c06",
+  "theme_color": "#451a03",
+  "icons": [
+    { "src": "LOGO.png", "sizes": "1254x1254", "type": "image/png", "purpose": "any" }
+  ]
 }
