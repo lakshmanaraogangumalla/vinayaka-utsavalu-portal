@@ -1,54 +1,33 @@
-const CACHE_NAME = 'vinayaka-seva-v5';
-const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
-  './manifest.json',
-  './LOGO.png',
-  './OY.CSS',
-  './OY.JS',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css',
-  'https://cdn.tailwindcss.com',
-  'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js',
-  'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
-  'https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js'
-];
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE)).then(() => self.skipWaiting())
-  );
+/* Offline shell only. Requests containing account or committee API data are never cached. */
+const CACHE_NAME = 'vinayaka-seva-v12';
+const CORE = ['./index.html', './app.js?v=12', './styles.css?v=12', './manifest.json', './ganesh.png', './LOGO.png', './VINYAKA.jpg'];
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE)));
 });
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-      );
-    }).then(() => self.clients.claim())
-  );
+self.addEventListener('message', event => {
+  if (event.data?.type === 'ACTIVATE_UPDATE') self.skipWaiting();
 });
-
-self.addEventListener('fetch', (event) => {
-  const url = event.request.url;
-
-  // CRITICAL FIX: Completely bypass Google Apps Script API calls from SW Cache
-  if (url.includes('script.google.com') || url.includes('macros/s/')) {
-    event.respondWith(fetch(event.request));
-    return;
-  }
-
-  // Network-First strategy for application assets to avoid stale script execution
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        if (response && response.status === 200) {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
-        }
-        return response;
-      })
-      .catch(() => caches.match(event.request))
-  );
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    for (const name of await caches.keys()) {
+      if (name.startsWith('vinayaka-seva-') && name !== CACHE_NAME) await caches.delete(name);
+    }
+    await self.clients.claim();
+  })());
+});
+self.addEventListener('fetch', event => {
+  const request = event.request;
+  const url = new URL(request.url);
+  if (request.method !== 'GET' || url.origin !== self.location.origin) return;
+  const known = CORE.some(path => new URL(path, self.registration.scope).pathname === url.pathname);
+  if (!known && request.mode !== 'navigate') return;
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    // Each active worker serves its own matching HTML/CSS/JS shell together.
+    const cached = await cache.match(request, { ignoreSearch: true });
+    if (cached) return cached;
+    if (request.mode === 'navigate') return await cache.match('./index.html');
+    try { return await fetch(request); }
+    catch { return new Response('This file is unavailable offline.', { status: 503 }); }
+  })());
 });
